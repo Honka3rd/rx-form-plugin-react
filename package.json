@@ -1,0 +1,32 @@
+{
+  "name": "rx-form-plugin-react",
+  "version": "1.0.0",
+  "description": "rx-form-plugin React specification",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "npx tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Honka3rd/rx-form-plugin-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Honka3rd/rx-form-plugin-react.git/issues"
+  },
+  "homepage": "https://github.com/Honka3rd/rx-form-plugin-react.git#readme",
+  "keywords": [],
+  "author": "Zeli",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rx-store-form-plugin": "^2.1.8",
+    "typescript": "5.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.12",
+    "@types/react-dom": "^18.2.5"
+  }
+}
