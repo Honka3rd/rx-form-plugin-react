@@ -6,8 +6,8 @@ import {
 
 export type ProviderProp = {
   children: ReactNode;
-  placeholder?: string;
-  defaultValue?: string;
+  targetId?: string;
+  targetSelector?: string;
 };
 
 export type FormProviderProps = HTMLAttributes<HTMLElement> & {

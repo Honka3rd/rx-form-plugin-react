@@ -1,4 +1,4 @@
-import { cloneElement, Children, isValidElement, useEffect, useRef } from "react";
+import { cloneElement, Children, isValidElement } from "react";
 import { NormalFieldProvider } from "./provider";
 import {
   DatumType,
@@ -22,7 +22,7 @@ export const createNormalField = <
 ): FC<ProviderProp> => {
   const useFormDatum = createUseFormDatum(formControl);
   const useFormMetadata = createUseFormMetaDatum(formControl);
-  return ({ children, placeholder, defaultValue }) => {
+  return ({ children, targetId, targetSelector }) => {
     const datum = useFormDatum<N>(field);
     const metadata = useFormMetadata<N>(field);
     const only = Children.only(children);
@@ -31,8 +31,8 @@ export const createNormalField = <
     }
     return (
       <NormalFieldProvider
-        placeholder={placeholder}
-        defaultValue={defaultValue}
+        targetId={targetId}
+        targetSelector={targetSelector}
         field={field}
         type={type}
       >

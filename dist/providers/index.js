@@ -8,3 +8,4 @@ const immutable_1 = require("./immutable");
 Object.defineProperty(exports, "createImmutableField", { enumerable: true, get: function () { return immutable_1.createImmutableField; } });
 const normal_1 = require("./normal");
 Object.defineProperty(exports, "createNormalField", { enumerable: true, get: function () { return normal_1.createNormalField; } });
+//# sourceMappingURL=index.js.map

@@ -30,3 +30,4 @@ const formImmutableStateManager = (formControl) => ({
     useFormMetaDatum: (0, hooks_1.createUseImmutableFormMetaDatum)(formControl),
 });
 exports.formImmutableStateManager = formImmutableStateManager;
+//# sourceMappingURL=index.js.map

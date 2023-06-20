@@ -16,3 +16,4 @@ Object.defineProperty(exports, "createUseImmutableFormMetadata", { enumerable: t
 const createUseFormMetadatum_1 = require("./createUseFormMetadatum");
 Object.defineProperty(exports, "createUseFormMetaDatum", { enumerable: true, get: function () { return createUseFormMetadatum_1.createUseFormMetaDatum; } });
 Object.defineProperty(exports, "createUseImmutableFormMetaDatum", { enumerable: true, get: function () { return createUseFormMetadatum_1.createUseImmutableFormMetaDatum; } });
+//# sourceMappingURL=index.js.map
