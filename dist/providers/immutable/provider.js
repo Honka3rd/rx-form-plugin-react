@@ -13,6 +13,6 @@ const ImmutableFieldProvider = (props) => {
             current.setAttrBinder(() => { });
         }
     }, []);
-    return ((0, jsx_runtime_1.jsx)("rx-field-component", Object.assign({ "data-field": field, "data-type": type, defaultValue: defaultValue, placeholder: placeholder }, { children: children })));
+    return ((0, jsx_runtime_1.jsx)("rx-immutable-field-component", Object.assign({ "data-field": field, "data-type": type, defaultValue: defaultValue, placeholder: placeholder }, { children: children })));
 };
 exports.ImmutableFieldProvider = ImmutableFieldProvider;

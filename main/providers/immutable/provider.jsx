@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { FormFieldComponent } from "rx-store-form-plugin/dist/main/field";
+
 export const ImmutableFieldProvider = (props) => {
   const { field, children, placeholder, defaultValue, type } = props;
   const ref = useRef();
@@ -10,13 +11,13 @@ export const ImmutableFieldProvider = (props) => {
     }
   }, []);
   return (
-    <rx-field-component
+    <rx-immutable-field-component
       data-field={field}
       data-type={type}
       defaultValue={defaultValue}
       placeholder={placeholder}
     >
       {children}
-    </rx-field-component>
+    </rx-immutable-field-component>
   );
 };
