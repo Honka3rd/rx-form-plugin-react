@@ -1,5 +1,14 @@
+import { useEffect, useRef } from "react";
+import { FormFieldComponent } from "rx-store-form-plugin/dist/main/field";
 export const ImmutableFieldProvider = (props) => {
   const { field, children, placeholder, defaultValue, type } = props;
+  const ref = useRef();
+  useEffect(() => {
+    const { current } = ref;
+    if (current instanceof FormFieldComponent) {
+      current.setAttrBinder(() => {});
+    }
+  }, []);
   return (
     <rx-field-component
       data-field={field}

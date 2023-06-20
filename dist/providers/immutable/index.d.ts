@@ -1,4 +1,4 @@
-import { DatumType, FormControlData } from "rx-store-form-plugin/main/interfaces";
+import { DatumType, FormControlBasicMetadata, FormControlData, FormController } from "rx-store-form-plugin/main/interfaces";
 import { ProviderProp } from "../../interfaces";
 import { FC } from "react";
-export declare const createImmutableField: <F extends FormControlData, N extends number = number>(field: F[N]["field"], type?: DatumType) => FC<ProviderProp>;
+export declare const createImmutableField: <F extends FormControlData, M extends Partial<Record<F[N]["field"], FormControlBasicMetadata>>, S extends string = string, N extends number = number>(formControl: FormController<F, M, S>, field: F[N]["field"], type?: DatumType) => FC<ProviderProp>;

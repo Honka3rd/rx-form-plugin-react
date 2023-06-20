@@ -15,7 +15,7 @@ export const createUseFormDatum = <
   const { observeFormDatum, getDatum } = formControl;
   return <N extends number = number>(field: F[N]["field"]) => {
     const [datum, set] = useState(getDatum(field)!);
-    useEffect(() => observeFormDatum(field, set), []);
+    useEffect(() => observeFormDatum<N>(field, set), []);
     return datum;
   };
 };
@@ -30,7 +30,7 @@ export const createUseImmutableFormDatum = <
   const { observeFormDatum, getDatum } = formControl;
   return <N extends number = number>(field: F[N]["field"]) => {
     const [datum, set] = useState(getDatum(field)!);
-    useEffect(() => observeFormDatum(field, set), []);
+    useEffect(() => observeFormDatum<N>(field, set), []);
     return datum;
   };
 };

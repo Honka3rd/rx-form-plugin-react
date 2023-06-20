@@ -17,7 +17,7 @@ export const createUseFormMetaDatum = <
   const { observeMetaByField, getFieldMeta } = formControl;
   return <N extends number = number>(field: F[N]["field"]) => {
     const [metaDatum, set] = useState(getFieldMeta(field));
-    useEffect(() => observeMetaByField(field, set), []);
+    useEffect(() => observeMetaByField<F[N]["field"]>(field, set), []);
     return metaDatum;
   };
 };
@@ -32,7 +32,7 @@ export const createUseImmutableFormMetaDatum = <
   const { observeMetaByField, getFieldMeta } = formControl;
   return <N extends number = number>(field: F[N]["field"]) => {
     const [metaDatum, set] = useState(getFieldMeta(field));
-    useEffect(() => observeMetaByField(field, set), []);
+    useEffect(() => observeMetaByField<F[N]["field"]>(field, set), []);
     return metaDatum;
   };
 };
