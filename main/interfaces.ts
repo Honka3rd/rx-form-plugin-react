@@ -9,7 +9,6 @@ export type ProviderProp = {
   autoBinding?: boolean;
   targetId?: string;
   targetSelector?: string;
-  onChange?: <T = any>(event: T) => void;
 };
 
 export type FormProviderProps = HTMLAttributes<HTMLElement> & {
@@ -23,5 +22,5 @@ export type InjectedProps<
 > = {
   datum: F[N];
   metadata: Partial<M>[F[N]["field"]];
-  onChange?: <T = any>(event: T) => void;
+  onChange?: (event: unknown) => void;
 };

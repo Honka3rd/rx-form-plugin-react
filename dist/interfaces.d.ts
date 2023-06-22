@@ -5,7 +5,6 @@ export type ProviderProp = {
     autoBinding?: boolean;
     targetId?: string;
     targetSelector?: string;
-    onChange?: <T = any>(event: T) => void;
 };
 export type FormProviderProps = HTMLAttributes<HTMLElement> & {
     formProps?: HTMLAttributes<HTMLFormElement>;
@@ -13,5 +12,5 @@ export type FormProviderProps = HTMLAttributes<HTMLElement> & {
 export type InjectedProps<F extends FormControlData, M extends Partial<Record<F[N]["field"], FormControlBasicMetadata>>, N extends number = number> = {
     datum: F[N];
     metadata: Partial<M>[F[N]["field"]];
-    onChange?: <T = any>(event: T) => void;
+    onChange?: (event: unknown) => void;
 };
