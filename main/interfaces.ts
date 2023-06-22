@@ -6,6 +6,7 @@ import {
 
 export type ProviderProp = {
   children: ReactNode;
+  autoBinding?: boolean;
   targetId?: string;
   targetSelector?: string;
 };

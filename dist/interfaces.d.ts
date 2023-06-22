@@ -2,6 +2,7 @@ import { HTMLAttributes, ReactNode } from "react";
 import { FormControlBasicMetadata, FormControlData } from "rx-store-form-plugin/main/interfaces";
 export type ProviderProp = {
     children: ReactNode;
+    autoBinding?: boolean;
     targetId?: string;
     targetSelector?: string;
 };

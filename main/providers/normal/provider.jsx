@@ -1,15 +1,11 @@
 import { useEffect, useRef } from "react";
 import { FormFieldComponent } from "rx-store-form-plugin/dist/main/field";
+import { useNormalBinding } from "../shared";
 
 export const NormalFieldProvider = (props) => {
-  const { field, children, type, targetId, targetSelector } = props;
-  const ref = useRef();
-  useEffect(() => {
-    const { current } = ref;
-    if (current instanceof FormFieldComponent) {
-      current.setAttrBinder(() => {});
-    }
-  }, []);
+  const { field, children, type, autoBinding, targetId, targetSelector } =
+    props;
+  const ref = useNormalBinding(autoBinding);
   return (
     <rx-field-component
       data-field={field}
