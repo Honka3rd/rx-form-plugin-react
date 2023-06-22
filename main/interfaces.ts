@@ -11,7 +11,7 @@ export type ProviderProp = {
 };
 
 export type FormProviderProps = HTMLAttributes<HTMLElement> & {
-  formProps: HTMLAttributes<HTMLFormElement>;
+  formProps?: HTMLAttributes<HTMLFormElement>;
 };
 
 export type InjectedProps<

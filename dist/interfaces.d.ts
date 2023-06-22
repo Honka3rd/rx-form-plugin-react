@@ -6,7 +6,7 @@ export type ProviderProp = {
     targetSelector?: string;
 };
 export type FormProviderProps = HTMLAttributes<HTMLElement> & {
-    formProps: HTMLAttributes<HTMLFormElement>;
+    formProps?: HTMLAttributes<HTMLFormElement>;
 };
 export type InjectedProps<F extends FormControlData, M extends Partial<Record<F[N]["field"], FormControlBasicMetadata>>, N extends number = number> = {
     datum: F[N];
