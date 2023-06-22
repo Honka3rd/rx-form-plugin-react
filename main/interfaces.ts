@@ -23,4 +23,5 @@ export type InjectedProps<
 > = {
   datum: F[N];
   metadata: Partial<M>[F[N]["field"]];
+  onChange?: <T = any>(event: T) => void;
 };
