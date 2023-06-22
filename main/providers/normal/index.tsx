@@ -22,7 +22,7 @@ export const createNormalField = <
 ): FC<ProviderProp> => {
   const useFormDatum = createUseFormDatum(formControl);
   const useFormMetadata = createUseFormMetaDatum(formControl);
-  return ({ children, autoBinding, targetId, targetSelector }) => {
+  return ({ children, autoBinding, targetId, targetSelector, onChange }) => {
     const datum = useFormDatum<N>(field);
     const metadata = useFormMetadata<N>(field);
     const only = Children.only(children);
@@ -41,6 +41,7 @@ export const createNormalField = <
           ...only.props,
           datum,
           metadata,
+          onChange,
         })}
       </NormalFieldProvider>
     );
