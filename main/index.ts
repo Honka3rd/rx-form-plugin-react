@@ -13,17 +13,18 @@ import {
 } from "./hooks";
 
 import {
-  controlledFormProvider,
-  controlledImmutableFormProvider,
-  createNormalField,
-  createImmutableField,
-} from "./providers";
-import {
   FormControlBasicMetadata,
   FormControlData,
   FormController,
   ImmutableFormController,
 } from "rx-store-form-plugin/main/interfaces";
+import { NormalComparatorsConfig } from "./interfaces";
+import {
+  controlledFormProvider,
+  controlledImmutableFormProvider,
+  createImmutableField,
+  createNormalField,
+} from "./providers";
 
 try {
   installNRFComponents();
@@ -36,11 +37,11 @@ export const formStateManager = <
   M extends Partial<Record<F[number]["field"], FormControlBasicMetadata>>,
   S extends string
 >(
-  formControl: FormController<F, M, S>
+  formControl: FormController<F, M, S>, config: NormalComparatorsConfig<F>
 ) => ({
-  useFormData: createUseFormData(formControl),
-  useFormDatum: createUseFormDatum(formControl),
-  useFormFieldValue: createUseFormFieldValue(formControl),
+  useFormData: createUseFormData(formControl, config?.formDataCompare),
+  useFormDatum: createUseFormDatum(formControl, config.formFieldCompare),
+  useFormFieldValue: createUseFormFieldValue(formControl, config.formValueCompare),
   useFormMetadata: createUseFormMetadata(formControl),
   useFormMetaDatum: createUseFormMetaDatum(formControl),
 });
@@ -61,7 +62,6 @@ export const formImmutableStateManager = <
 
 export {
   controlledFormProvider,
-  controlledImmutableFormProvider,
-  createNormalField,
-  createImmutableField,
+  controlledImmutableFormProvider, createImmutableField, createNormalField
 };
+

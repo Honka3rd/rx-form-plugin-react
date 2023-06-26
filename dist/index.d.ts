@@ -1,6 +1,11 @@
-import { controlledFormProvider, controlledImmutableFormProvider, createNormalField, createImmutableField } from "./providers";
 import { FormControlBasicMetadata, FormControlData, FormController, ImmutableFormController } from "rx-store-form-plugin/main/interfaces";
-export declare const formStateManager: <F extends FormControlData, M extends Partial<Record<F[number]["field"], FormControlBasicMetadata>>, S extends string>(formControl: FormController<F, M, S>) => {
+import { NormalComparatorsConfig } from "./interfaces";
+import { controlledFormProvider, controlledImmutableFormProvider, createImmutableField, createNormalField } from "./providers";
+export declare const formStateManager: <F extends FormControlData, M extends Partial<Record<F[number]["field"], FormControlBasicMetadata>>, S extends string>(formControl: FormController<F, M, S>, config: Partial<{
+    formDataCompare: import("./interfaces").Comparator<F[number][]>;
+    formFieldCompare: import("./interfaces").Comparator<F[number]>;
+    formValueCompare: import("./interfaces").Comparator<F[number]["value"]>;
+}>) => {
     useFormData: <N extends number[] = number[]>(fields?: F[N[number]]["field"][] | undefined) => ReturnType<Record<S, () => F>[S]> | F[N[number]][];
     useFormDatum: <N_1 extends number = number>(field: F[N_1]["field"]) => F[N_1];
     useFormFieldValue: <N_2 extends number = number>(field: F[N_2]["field"]) => F[N_2]["value"] | undefined;
@@ -14,4 +19,4 @@ export declare const formImmutableStateManager: <F extends FormControlData, M ex
     useFormMetadata: () => import("rx-store-form-plugin/main/interfaces").ImmutableMeta<F, M>;
     useFormMetaDatum: <N_3 extends number = number>(field: F[N_3]["field"]) => import("rx-store-form-plugin/main/interfaces").ImmutableMeta<F, M>;
 };
-export { controlledFormProvider, controlledImmutableFormProvider, createNormalField, createImmutableField, };
+export { controlledFormProvider, controlledImmutableFormProvider, createImmutableField, createNormalField };

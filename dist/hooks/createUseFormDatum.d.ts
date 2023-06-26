@@ -1,3 +1,4 @@
 import { FormControlBasicMetadata, FormControlData, FormController, ImmutableFormController } from "rx-store-form-plugin/main/interfaces";
-export declare const createUseFormDatum: <F extends FormControlData, M extends Partial<Record<F[number]["field"], FormControlBasicMetadata>>, S extends string>(formControl: FormController<F, M, S>) => <N extends number = number>(field: F[N]["field"]) => F[N];
+import { Comparator } from "../interfaces";
+export declare const createUseFormDatum: <F extends FormControlData, M extends Partial<Record<F[number]["field"], FormControlBasicMetadata>>, S extends string>(formControl: FormController<F, M, S>, comparator?: Comparator<F[number]> | undefined) => <N extends number = number>(field: F[N]["field"]) => F[N];
 export declare const createUseImmutableFormDatum: <F extends FormControlData, M extends Partial<Record<F[number]["field"], FormControlBasicMetadata>>, S extends string>(formControl: ImmutableFormController<F, M, S>) => <N extends number = number>(field: F[N]["field"]) => import("immutable").Map<keyof F[N], import("rx-store-form-plugin/main/interfaces").PV<F[N]>>;

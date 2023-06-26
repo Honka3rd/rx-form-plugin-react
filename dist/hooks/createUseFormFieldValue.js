@@ -2,11 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createUseImmutableFormFieldValue = exports.createUseFormFieldValue = void 0;
 const react_1 = require("react");
-const createUseFormFieldValue = (formControl) => {
+const createUseFormFieldValue = (formControl, comparator) => {
     const { observeFormValue, getDatumValue } = formControl;
     return (field) => {
         const [value, set] = (0, react_1.useState)(getDatumValue(field));
-        (0, react_1.useEffect)(() => observeFormValue(field, set), []);
+        (0, react_1.useEffect)(() => observeFormValue(field, set, comparator), []);
         return value;
     };
 };
