@@ -6,12 +6,13 @@ import {
 
 export type ProviderProp = {
   children: ReactNode;
+  autoBinding?: boolean;
   targetId?: string;
   targetSelector?: string;
 };
 
 export type FormProviderProps = HTMLAttributes<HTMLElement> & {
-  formProps: HTMLAttributes<HTMLFormElement>;
+  formProps?: HTMLAttributes<HTMLFormElement>;
 };
 
 export type InjectedProps<
@@ -20,5 +21,6 @@ export type InjectedProps<
   N extends number = number
 > = {
   datum: F[N];
-  metadata: Partial<M>[F[N]["field"]]
+  metadata: Partial<M>[F[N]["field"]];
+  onChange?: (event: unknown) => void;
 };

@@ -21,7 +21,7 @@ export const createImmutableField = <
 ): FC<ProviderProp> => {
   const useFormDatum = createUseFormDatum(formControl);
   const useFormMetadata = createUseFormMetaDatum(formControl);
-  return ({ children, targetId, targetSelector }) => {
+  return ({ children, autoBinding, targetId, targetSelector }) => {
     const datum = useFormDatum<N>(field);
     const metadata = useFormMetadata<N>(field);
     const only = Children.only(children);
@@ -34,6 +34,7 @@ export const createImmutableField = <
         targetSelector={targetSelector}
         field={field}
         type={type}
+        autoBinding={autoBinding}
       >
         {cloneElement(only, {
           ...only.props,
