@@ -1,6 +1,6 @@
 {
   "name": "rx-form-plugin-react",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "rx-form-plugin React specification",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -21,7 +21,7 @@
   "license": "ISC",
   "dependencies": {
     "react": "^18.2.0",
-    "rx-store-form-plugin": "^2.2.6",
+    "rx-store-form-plugin": "^2.2.8",
     "typescript": "5.0.2"
   },
   "devDependencies": {
