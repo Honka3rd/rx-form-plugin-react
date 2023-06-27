@@ -1,10 +1,14 @@
 import { HTMLAttributes, ReactNode } from "react";
 import { FormControlBasicMetadata, FormControlData } from "rx-store-form-plugin/main/interfaces";
-export type ProviderProp = {
+export type Any = {
+    [k: string]: any;
+};
+export type ProviderProp<P extends Any = {}> = {
     children: ReactNode;
     autoBinding?: boolean;
     targetId?: string;
     targetSelector?: string;
+    forwardedProps?: P;
 };
 export type FormProviderProps = HTMLAttributes<HTMLElement> & {
     formProps?: HTMLAttributes<HTMLFormElement>;

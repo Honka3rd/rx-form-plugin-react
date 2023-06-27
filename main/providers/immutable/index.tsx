@@ -3,25 +3,35 @@ import {
   DatumType,
   FormControlBasicMetadata,
   FormControlData,
-  FormController,
+  ImmutableFormController,
 } from "rx-store-form-plugin/main/interfaces";
-import { ProviderProp } from "../../interfaces";
+import { Any, ProviderProp } from "../../interfaces";
 import { Children, FC, cloneElement, isValidElement } from "react";
-import { createUseFormDatum, createUseFormMetaDatum } from "../../hooks";
+import {
+  createUseImmutableFormDatum,
+  createUseImmutableFormMetaDatum,
+} from "../../hooks";
 
 export const createImmutableField = <
   F extends FormControlData,
   M extends Partial<Record<F[N]["field"], FormControlBasicMetadata>>,
   S extends string = string,
-  N extends number = number
+  N extends number = number,
+  P extends Any = {}
 >(
-  formControl: FormController<F, M, S>,
+  formControl: ImmutableFormController<F, M, S>,
   field: F[N]["field"],
   type?: DatumType
-): FC<ProviderProp> => {
-  const useFormDatum = createUseFormDatum(formControl);
-  const useFormMetadata = createUseFormMetaDatum(formControl);
-  return ({ children, autoBinding, targetId, targetSelector }) => {
+): FC<ProviderProp<P>> => {
+  const useFormDatum = createUseImmutableFormDatum(formControl);
+  const useFormMetadata = createUseImmutableFormMetaDatum(formControl);
+  return ({
+    children,
+    autoBinding,
+    targetId,
+    targetSelector,
+    forwardedProps,
+  }) => {
     const datum = useFormDatum<N>(field);
     const metadata = useFormMetadata<N>(field);
     const only = Children.only(children);
@@ -37,6 +47,7 @@ export const createImmutableField = <
         autoBinding={autoBinding}
       >
         {cloneElement(only, {
+          ...forwardedProps,
           ...only.props,
           datum,
           metadata,

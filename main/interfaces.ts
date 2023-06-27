@@ -4,11 +4,14 @@ import {
   FormControlData,
 } from "rx-store-form-plugin/main/interfaces";
 
-export type ProviderProp = {
+export type Any = { [k: string]: any }
+
+export type ProviderProp<P extends Any = {}> = {
   children: ReactNode;
   autoBinding?: boolean;
   targetId?: string;
   targetSelector?: string;
+  forwardedProps?: P;
 };
 
 export type FormProviderProps = HTMLAttributes<HTMLElement> & {
@@ -27,10 +30,8 @@ export type InjectedProps<
 
 export type Comparator<T> = (var1: T, var2: T) => boolean;
 
-export type NormalComparatorsConfig<
-F extends FormControlData,
-> = Partial<{
+export type NormalComparatorsConfig<F extends FormControlData> = Partial<{
   formDataCompare: Comparator<F[number][]>;
   formFieldCompare: Comparator<F[number]>;
-  formValueCompare: Comparator<F[number]["value"]>
-}>
+  formValueCompare: Comparator<F[number]["value"]>;
+}>;
