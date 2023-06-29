@@ -25,6 +25,12 @@ import {
   createImmutableField,
   createNormalField,
 } from "./providers";
+import { NormalDynamicField } from "./providers/normal";
+import { ImmutableDynamicField } from "./providers/immutable";
+import {
+  createUseFormPartialMeta,
+  createUseImmutableFormPartialMeta,
+} from "./hooks/createUseFormPartialMeta";
 
 try {
   installNRFComponents();
@@ -37,12 +43,20 @@ export const formStateManager = <
   M extends Partial<Record<F[number]["field"], FormControlBasicMetadata>>,
   S extends string
 >(
-  formControl: FormController<F, M, S>, config: NormalComparatorsConfig<F>
+  formControl: FormController<F, M, S>,
+  config: NormalComparatorsConfig<F, M> = {}
 ) => ({
-  useFormData: createUseFormData(formControl, config?.formDataCompare),
+  useFormData: createUseFormData(formControl, config.formDataCompare),
   useFormDatum: createUseFormDatum(formControl, config.formFieldCompare),
-  useFormFieldValue: createUseFormFieldValue(formControl, config.formValueCompare),
+  useFormFieldValue: createUseFormFieldValue(
+    formControl,
+    config.formValueCompare
+  ),
   useFormMetadata: createUseFormMetadata(formControl),
+  useFormPartialMeta: createUseFormPartialMeta(
+    formControl,
+    config.formPartialCompare
+  ),
   useFormMetaDatum: createUseFormMetaDatum(formControl),
 });
 
@@ -57,11 +71,15 @@ export const formImmutableStateManager = <
   useFormDatum: createUseImmutableFormDatum(formControl),
   useFormFieldValue: createUseImmutableFormFieldValue(formControl),
   useFormMetadata: createUseImmutableFormMetadata(formControl),
+  useFormPartialMeta: createUseImmutableFormPartialMeta(formControl),
   useFormMetaDatum: createUseImmutableFormMetaDatum(formControl),
 });
 
 export {
   controlledFormProvider,
-  controlledImmutableFormProvider, createImmutableField, createNormalField
+  controlledImmutableFormProvider,
+  createImmutableField,
+  createNormalField,
+  NormalDynamicField,
+  ImmutableDynamicField,
 };
-

@@ -1,0 +1,4 @@
+import { FormControlBasicMetadata, FormControlData, FormController, ImmutableFormController } from "rx-store-form-plugin/main/interfaces";
+import { Comparator } from "../interfaces";
+export declare const createUseFormPartialMeta: <F extends FormControlData, M extends Partial<Record<F[number]["field"], FormControlBasicMetadata>>, S extends string, NS extends F[number]["field"][] = F[number]["field"][]>(formControl: FormController<F, M, S>, comparator?: Comparator<Partial<M>> | undefined) => (fields: NS) => Partial<M>;
+export declare const createUseImmutableFormPartialMeta: <F extends FormControlData, M extends Partial<Record<F[number]["field"], FormControlBasicMetadata>>, S extends string>(formControl: ImmutableFormController<F, M, S>) => (fields: F[number]["field"][]) => import("rx-store-form-plugin/main/interfaces").ImmutableMeta<F, M>;

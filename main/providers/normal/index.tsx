@@ -1,4 +1,10 @@
-import { cloneElement, Children, isValidElement } from "react";
+import {
+  cloneElement,
+  Children,
+  isValidElement,
+  useMemo,
+  useCallback,
+} from "react";
 import { NormalFieldProvider } from "./provider";
 import {
   DatumType,
@@ -6,7 +12,7 @@ import {
   FormControlData,
   FormController,
 } from "rx-store-form-plugin/main/interfaces";
-import { Any, ProviderProp } from "../../interfaces";
+import { Any, NormalDynamicFieldProps, ProviderProp } from "../../interfaces";
 import { FC } from "react";
 import { createUseFormDatum, createUseFormMetaDatum } from "../../hooks";
 
@@ -23,6 +29,9 @@ export const createNormalField = <
 ): FC<ProviderProp<P>> => {
   const useFormDatum = createUseFormDatum(formControl);
   const useFormMetadata = createUseFormMetaDatum(formControl);
+  const change = (value: F[N]["value"]) => {
+    formControl.changeFormValue(field, value);
+  };
   return ({
     children,
     autoBinding,
@@ -49,8 +58,56 @@ export const createNormalField = <
           ...only.props,
           datum,
           metadata,
+          change,
         })}
       </NormalFieldProvider>
     );
   };
+};
+
+export const NormalDynamicField: FC<NormalDynamicFieldProps> = ({
+  formControl,
+  field,
+  type,
+  children,
+  autoBinding,
+  targetId,
+  targetSelector,
+  forwardedProps,
+}) => {
+  const useFormDatum = useMemo(() => createUseFormDatum(formControl), []);
+  const useFormMetadata = useMemo(
+    () => createUseFormMetaDatum(formControl),
+    []
+  );
+  const datum = useFormDatum(field);
+  const metadata = useFormMetadata(field);
+  const only = Children.only(children);
+  const change = useCallback(
+    (value: any) => {
+      formControl.changeFormValue(field, value);
+    },
+    [formControl]
+  );
+  if (!isValidElement(only)) {
+    return null;
+  }
+
+  return (
+    <NormalFieldProvider
+      targetId={targetId}
+      targetSelector={targetSelector}
+      field={field}
+      type={type}
+      autoBinding={autoBinding}
+    >
+      {cloneElement(only, {
+        ...forwardedProps,
+        ...only.props,
+        datum,
+        metadata,
+        change,
+      })}
+    </NormalFieldProvider>
+  );
 };
