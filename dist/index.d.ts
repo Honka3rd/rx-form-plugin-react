@@ -23,7 +23,7 @@ export declare const formImmutableStateManager: <F extends FormControlData, M ex
     useFormFieldValue: <N_2 extends number = number>(field: F[N_2]["field"]) => NonNullable<import("rx-store-form-plugin/main/interfaces").V<F[number]>>;
     useFormMetadata: () => import("rx-store-form-plugin/main/interfaces").ImmutableMeta<F, M>;
     useFormPartialMeta: (fields: F[number]["field"][]) => import("rx-store-form-plugin/main/interfaces").ImmutableMeta<F, M>;
-    useFormMetaDatum: <N_3 extends number = number>(field: F[N_3]["field"]) => import("rx-store-form-plugin/main/interfaces").ImmutableMetaDatum;
+    useFormMetaDatum: <N_3 extends number = number>(field: F[N_3]["field"]) => import("immutable").Map<keyof FormControlBasicMetadata, any>;
     useControlledValidation: () => void;
 };
 export { controlledFormProvider, controlledImmutableFormProvider, createImmutableField, createNormalField, NormalDynamicField, ImmutableDynamicField, };
