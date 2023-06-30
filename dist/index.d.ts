@@ -15,6 +15,7 @@ export declare const formStateManager: <F extends FormControlData, M extends Par
     useFormMetadata: () => Partial<M> | undefined;
     useFormPartialMeta: (fields: F[number]["field"][]) => Partial<M>;
     useFormMetaDatum: <N_3 extends number = number>(field: F[N_3]["field"]) => Partial<M>[F[number]["field"]];
+    useControlledValidation: () => void;
 };
 export declare const formImmutableStateManager: <F extends FormControlData, M extends Partial<Record<F[number]["field"], FormControlBasicMetadata>>, S extends string>(formControl: ImmutableFormController<F, M, S>) => {
     useFormData: <N extends number[] = number[]>(fields?: F[N[number]]["field"][] | undefined) => ReturnType<Record<S, () => import("immutable").List<import("immutable").Map<keyof F[number], import("rx-store-form-plugin/main/interfaces").V<F[number]>>>>[S]> | import("immutable").List<import("immutable").Map<keyof F[N[number]], import("rx-store-form-plugin/main/interfaces").PV<F[N[number]]>>>;
@@ -23,5 +24,6 @@ export declare const formImmutableStateManager: <F extends FormControlData, M ex
     useFormMetadata: () => import("rx-store-form-plugin/main/interfaces").ImmutableMeta<F, M>;
     useFormPartialMeta: (fields: F[number]["field"][]) => import("rx-store-form-plugin/main/interfaces").ImmutableMeta<F, M>;
     useFormMetaDatum: <N_3 extends number = number>(field: F[N_3]["field"]) => import("rx-store-form-plugin/main/interfaces").ImmutableMetaDatum;
+    useControlledValidation: () => void;
 };
 export { controlledFormProvider, controlledImmutableFormProvider, createImmutableField, createNormalField, NormalDynamicField, ImmutableDynamicField, };

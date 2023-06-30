@@ -13,6 +13,7 @@ Object.defineProperty(exports, "NormalDynamicField", { enumerable: true, get: fu
 const immutable_1 = require("./providers/immutable");
 Object.defineProperty(exports, "ImmutableDynamicField", { enumerable: true, get: function () { return immutable_1.ImmutableDynamicField; } });
 const createUseFormPartialMeta_1 = require("./hooks/createUseFormPartialMeta");
+const createUseControlledValidation_1 = require("./hooks/createUseControlledValidation");
 try {
     (0, rx_store_form_plugin_1.installNRFComponents)();
 }
@@ -26,6 +27,7 @@ const formStateManager = (formControl, config = {}) => ({
     useFormMetadata: (0, hooks_1.createUseFormMetadata)(formControl),
     useFormPartialMeta: (0, createUseFormPartialMeta_1.createUseFormPartialMeta)(formControl, config.formPartialCompare),
     useFormMetaDatum: (0, hooks_1.createUseFormMetaDatum)(formControl),
+    useControlledValidation: (0, createUseControlledValidation_1.createUseControlledValidation)(formControl),
 });
 exports.formStateManager = formStateManager;
 const formImmutableStateManager = (formControl) => ({
@@ -35,6 +37,7 @@ const formImmutableStateManager = (formControl) => ({
     useFormMetadata: (0, hooks_1.createUseImmutableFormMetadata)(formControl),
     useFormPartialMeta: (0, createUseFormPartialMeta_1.createUseImmutableFormPartialMeta)(formControl),
     useFormMetaDatum: (0, hooks_1.createUseImmutableFormMetaDatum)(formControl),
+    useControlledValidation: (0, createUseControlledValidation_1.createUseControlledValidation)(formControl),
 });
 exports.formImmutableStateManager = formImmutableStateManager;
 //# sourceMappingURL=index.js.map

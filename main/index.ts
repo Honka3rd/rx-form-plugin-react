@@ -31,6 +31,7 @@ import {
   createUseFormPartialMeta,
   createUseImmutableFormPartialMeta,
 } from "./hooks/createUseFormPartialMeta";
+import { createUseControlledValidation } from "./hooks/createUseControlledValidation";
 
 try {
   installNRFComponents();
@@ -58,6 +59,7 @@ export const formStateManager = <
     config.formPartialCompare
   ),
   useFormMetaDatum: createUseFormMetaDatum(formControl),
+  useControlledValidation: createUseControlledValidation(formControl),
 });
 
 export const formImmutableStateManager = <
@@ -73,6 +75,7 @@ export const formImmutableStateManager = <
   useFormMetadata: createUseImmutableFormMetadata(formControl),
   useFormPartialMeta: createUseImmutableFormPartialMeta(formControl),
   useFormMetaDatum: createUseImmutableFormMetaDatum(formControl),
+  useControlledValidation: createUseControlledValidation(formControl),
 });
 
 export {
