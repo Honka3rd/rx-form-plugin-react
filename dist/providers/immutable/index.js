@@ -75,7 +75,6 @@ const ImmutableDynamicField = ({ formControl, field, type, children, autoBinding
     const injected = (0, react_1.useMemo)(() => {
         if (autoBinding) {
             return {
-                datum,
                 metadata,
             };
         }

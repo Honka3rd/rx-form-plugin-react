@@ -68,7 +68,6 @@ export const createNormalField = <
     const injected: InjectedProps<F, M, N> = useMemo(() => {
       if (autoBinding) {
         return {
-          datum,
           metadata,
         };
       }

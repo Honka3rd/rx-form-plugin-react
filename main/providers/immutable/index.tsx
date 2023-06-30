@@ -157,7 +157,6 @@ export const ImmutableDynamicField: FC<ImmutableDynamicFieldProps> = ({
     useMemo(() => {
       if (autoBinding) {
         return {
-          datum,
           metadata,
         };
       }

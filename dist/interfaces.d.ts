@@ -24,12 +24,12 @@ type InjectedHandlers<F extends FormControlData, N extends number = number> = Pa
     blur: () => void;
 }>;
 export interface InjectedProps<F extends FormControlData, M extends Partial<Record<F[N]["field"], FormControlBasicMetadata>>, N extends number = number> extends InjectedHandlers<F, N> {
-    datum: F[N];
     metadata: Partial<M>[F[N]["field"]];
+    datum?: F[N];
 }
 export interface InjectedImmutableProps<F extends FormControlData, N extends number = number> extends InjectedHandlers<F, N> {
-    datum: Immutable.Map<keyof F[N], PV<F[N]>>;
     metadata: ImmutableMetaDatum;
+    datum?: Immutable.Map<keyof F[N], PV<F[N]>>;
 }
 export type Comparator<T> = (var1: T, var2: T) => boolean;
 export type NormalComparatorsConfig<F extends FormControlData, M extends Partial<Record<F[number]["field"], FormControlBasicMetadata>>> = Partial<{
