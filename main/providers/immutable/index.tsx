@@ -158,6 +158,7 @@ export const ImmutableDynamicField: FC<ImmutableDynamicFieldProps> = ({
       if (autoBinding) {
         return {
           metadata,
+          datum
         };
       }
       return {

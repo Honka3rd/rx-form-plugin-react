@@ -69,6 +69,7 @@ export const createNormalField = <
       if (autoBinding) {
         return {
           metadata,
+          datum
         };
       }
       return {

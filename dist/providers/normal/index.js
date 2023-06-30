@@ -31,6 +31,7 @@ const createNormalField = (formControl, field, type) => {
             if (autoBinding) {
                 return {
                     metadata,
+                    datum
                 };
             }
             return {

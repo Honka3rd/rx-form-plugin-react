@@ -76,6 +76,7 @@ const ImmutableDynamicField = ({ formControl, field, type, children, autoBinding
         if (autoBinding) {
             return {
                 metadata,
+                datum
             };
         }
         return {
