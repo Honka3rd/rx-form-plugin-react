@@ -1,9 +1,11 @@
 import { forwardRef } from "react";
 export const FormProvider = forwardRef((props, ref) => {
-  const { formProps, ...containerProps } = props;
+  const { formProps, formLocator, ...containerProps } = props;
   return (
     <rx-form-component {...containerProps} ref={ref}>
-      <form {...formProps}>{props.children}</form>
+      <form {...formProps} data-formID={formLocator}>
+        {props.children}
+      </form>
     </rx-form-component>
   );
 });

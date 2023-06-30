@@ -21,6 +21,7 @@ export type ProviderProp<P extends Any = {}> = {
 
 export type FormProviderProps = HTMLAttributes<HTMLElement> & {
   formProps?: HTMLAttributes<HTMLFormElement>;
+  formLocator?: string;
 };
 
 export type InjectedProps<

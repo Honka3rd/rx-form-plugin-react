@@ -6,8 +6,9 @@ import {
   FormControlBasicMetadata,
   FormControlData,
   FormController,
-  ImmutableFormController
+  ImmutableFormController,
 } from "rx-store-form-plugin/main/interfaces";
+import { useClassName } from "./shared";
 
 export const controlledFormProvider =
   <
@@ -17,7 +18,7 @@ export const controlledFormProvider =
   >(
     formControl: FormController<F, M, S>
   ): FC<FormProviderProps> =>
-  (props) => {
+  ({ className, ...props }) => {
     const formRef = useRef<FormControlComponent<F, M, S>>(null);
     useEffect(() => {
       const { current } = formRef;
@@ -28,10 +29,12 @@ export const controlledFormProvider =
       current.setFormController(formControl);
     }, []);
 
+    useClassName(formRef, className);
+
     return <FormProvider {...props} ref={formRef} />;
   };
 
-  export const controlledImmutableFormProvider =
+export const controlledImmutableFormProvider =
   <
     F extends FormControlData,
     M extends Partial<Record<F[number]["field"], FormControlBasicMetadata>>,
@@ -39,7 +42,7 @@ export const controlledFormProvider =
   >(
     formControl: ImmutableFormController<F, M, S>
   ): FC<FormProviderProps> =>
-  (props) => {
+  ({ className, ...props }) => {
     const formRef = useRef<FormControlComponent<F, M, S>>(null);
     useEffect(() => {
       const { current } = formRef;
@@ -49,6 +52,8 @@ export const controlledFormProvider =
 
       current.setFormController(formControl);
     }, []);
+
+    useClassName(formRef, className);
 
     return <FormProvider {...props} ref={formRef} />;
   };
