@@ -13,17 +13,21 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.controlledImmutableFormProvider = exports.controlledFormProvider = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
-const provider_1 = require("./provider");
 const react_1 = require("react");
+const provider_1 = require("./provider");
 const shared_1 = require("./shared");
 const controlledFormProvider = (formControl) => (_a) => {
-    var { className } = _a, props = __rest(_a, ["className"]);
+    var { className, submitHandler, resetHandler } = _a, props = __rest(_a, ["className", "submitHandler", "resetHandler"]);
     const formRef = (0, react_1.useRef)(null);
+    const handlers = (0, react_1.useRef)({ submitHandler, resetHandler });
     (0, react_1.useEffect)(() => {
         const { current } = formRef;
         if (!current) {
             return;
         }
+        const { submitHandler, resetHandler } = handlers.current;
+        submitHandler && current.setOnSubmit(submitHandler);
+        resetHandler && current.setOnReset(resetHandler);
         current.setFormController(formControl);
     }, []);
     (0, shared_1.useClassName)(formRef, className);

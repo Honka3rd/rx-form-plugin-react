@@ -7,6 +7,7 @@ import {
   ImmutableFormController,
   ImmutableMetaDatum,
   PV,
+  ToFormData,
 } from "rx-store-form-plugin/main/interfaces";
 
 export type Any = { [k: string]: any };
@@ -22,25 +23,36 @@ export type ProviderProp<P extends Any = {}> = {
 export type FormProviderProps = HTMLAttributes<HTMLElement> & {
   formProps?: HTMLAttributes<HTMLFormElement>;
   formLocator?: string;
+  submitHandler?: <T>(e: T, toFormData: ToFormData) => void;
+  resetHandler?: <T>(e: T) => void;
 };
 
-export type InjectedProps<
+type InjectedHandlers<
+F extends FormControlData,
+N extends number = number
+> = Partial<{
+  change: (value: F[N]["value"]) => void;
+  mouseover: () => void;
+  mouseleave: () => void;
+  focus: () => void;
+  blur: () => void;
+}>
+
+export interface InjectedProps<
   F extends FormControlData,
   M extends Partial<Record<F[N]["field"], FormControlBasicMetadata>>,
   N extends number = number
-> = {
+> extends InjectedHandlers<F, N> {
   datum: F[N];
   metadata: Partial<M>[F[N]["field"]];
-  change: (value: F[N]["value"]) => void;
 };
 
-export type InjectedImmutableProps<
+export interface InjectedImmutableProps<
   F extends FormControlData,
   N extends number = number
-> = {
+> extends InjectedHandlers<F, N> {
   datum: Immutable.Map<keyof F[N], PV<F[N]>>;
   metadata: ImmutableMetaDatum;
-  change: (value: Immutable.Map<keyof F[N], PV<F[N]>>) => void;
 };
 
 export type Comparator<T> = (var1: T, var2: T) => boolean;
