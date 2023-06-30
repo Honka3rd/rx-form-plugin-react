@@ -35,13 +35,17 @@ const controlledFormProvider = (formControl) => (_a) => {
 };
 exports.controlledFormProvider = controlledFormProvider;
 const controlledImmutableFormProvider = (formControl) => (_a) => {
-    var { className } = _a, props = __rest(_a, ["className"]);
+    var { className, submitHandler, resetHandler } = _a, props = __rest(_a, ["className", "submitHandler", "resetHandler"]);
     const formRef = (0, react_1.useRef)(null);
+    const handlers = (0, react_1.useRef)({ submitHandler, resetHandler });
     (0, react_1.useEffect)(() => {
         const { current } = formRef;
         if (!current) {
             return;
         }
+        const { submitHandler, resetHandler } = handlers.current;
+        submitHandler && current.setOnSubmit(submitHandler);
+        resetHandler && current.setOnReset(resetHandler);
         current.setFormController(formControl);
     }, []);
     (0, shared_1.useClassName)(formRef, className);

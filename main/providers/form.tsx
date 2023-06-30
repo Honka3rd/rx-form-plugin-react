@@ -49,14 +49,20 @@ export const controlledImmutableFormProvider =
   >(
     formControl: ImmutableFormController<F, M, S>
   ): FC<FormProviderProps> =>
-  ({ className, ...props }) => {
+  ({ className, submitHandler, resetHandler, ...props }) => {
     const formRef = useRef<FormControlComponent<F, M, S>>(null);
+    const handlers = useRef({ submitHandler, resetHandler });
     useEffect(() => {
       const { current } = formRef;
       if (!current) {
         return;
       }
+      const { submitHandler, resetHandler } = handlers.current;
 
+      submitHandler && current.setOnSubmit(submitHandler);
+
+      resetHandler && current.setOnReset(resetHandler);
+      
       current.setFormController(formControl);
     }, []);
 
