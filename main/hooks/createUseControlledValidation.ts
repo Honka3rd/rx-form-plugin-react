@@ -13,7 +13,7 @@ export const createUseControlledValidation = <
 >(
   formControl: FormController<F, M, S> | ImmutableFormController<F, M, S>
 ) => {
-  return () => {
-    useEffect(() => formControl.startValidation(), []);
+  return (deps?: any) => {
+    useEffect(() => formControl.startValidation(), [deps]);
   };
 };
