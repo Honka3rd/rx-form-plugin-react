@@ -1,4 +1,15 @@
 "use strict";
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NormalDynamicField = exports.createNormalField = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
@@ -23,7 +34,8 @@ const createNormalField = (formControl, field, type) => {
     const blur = () => {
         formControl.focusFormField(field, false).touchFormField(field, true);
     };
-    return ({ children, autoBinding, targetId, targetSelector, forwardedProps, }) => {
+    return (_a) => {
+        var { children, autoBinding, targetId, targetSelector, forwardedProps } = _a, props = __rest(_a, ["children", "autoBinding", "targetId", "targetSelector", "forwardedProps"]);
         const datum = useFormDatum(field);
         const metadata = useFormMetadata(field);
         const only = react_1.Children.only(children);
@@ -47,7 +59,7 @@ const createNormalField = (formControl, field, type) => {
         if (!(0, react_1.isValidElement)(only)) {
             return null;
         }
-        return ((0, jsx_runtime_1.jsx)(provider_1.NormalFieldProvider, Object.assign({ targetId: targetId, targetSelector: targetSelector, field: field, type: type, autoBinding: autoBinding }, { children: (0, react_1.cloneElement)(only, Object.assign(Object.assign(Object.assign({}, forwardedProps), only.props), injected)) })));
+        return ((0, jsx_runtime_1.jsx)(provider_1.NormalFieldProvider, Object.assign({ targetId: targetId, targetSelector: targetSelector, field: field, type: type, autoBinding: autoBinding }, props, { children: (0, react_1.cloneElement)(only, Object.assign(Object.assign(Object.assign({}, forwardedProps), only.props), injected)) })));
     };
 };
 exports.createNormalField = createNormalField;

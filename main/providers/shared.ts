@@ -1,21 +1,10 @@
 import { RefObject, useEffect, useRef } from "react";
-import {
-  FormControlComponent,
-} from "rx-store-form-plugin";
-import {
-  FormControlBasicMetadata,
-  FormControlData,
-} from "rx-store-form-plugin/main/interfaces";
 
-export const useClassName = <
-  F extends FormControlData,
-  M extends Partial<Record<F[number]["field"], FormControlBasicMetadata>>,
-  S extends string = string
->(
-  ref: RefObject<FormControlComponent<F, M, S>>,
+export const useClassName = (
+  ref: RefObject<HTMLElement>,
   className?: string
 ) => {
-  const prevClassName = useRef(className);
+  const prevClassName = useRef<string>();
   useEffect(() => {
     const { current } = ref;
     if (!current) {

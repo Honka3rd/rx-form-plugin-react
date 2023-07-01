@@ -3,13 +3,13 @@ import { DatumType, FormControlBasicMetadata, FormControlData, FormController, I
 export type Any = {
     [k: string]: any;
 };
-export type ProviderProp<P extends Any = {}> = {
+export interface ProviderProp<P extends Any = {}> extends HTMLAttributes<HTMLElement> {
     children: ReactNode;
     autoBinding?: boolean;
     targetId?: string;
     targetSelector?: string;
     forwardedProps?: P;
-};
+}
 export type FormProviderProps = HTMLAttributes<HTMLElement> & {
     formProps?: HTMLAttributes<HTMLFormElement>;
     formLocator?: string;

@@ -60,6 +60,7 @@ export const createNormalField = <
     targetId,
     targetSelector,
     forwardedProps,
+    ...props
   }) => {
     const datum = useFormDatum<N>(field);
     const metadata = useFormMetadata<N>(field);
@@ -94,6 +95,7 @@ export const createNormalField = <
         field={field}
         type={type}
         autoBinding={autoBinding}
+        {...props}
       >
         {cloneElement(only, {
           ...forwardedProps,

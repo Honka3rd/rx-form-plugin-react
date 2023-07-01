@@ -12,13 +12,14 @@ import {
 
 export type Any = { [k: string]: any };
 
-export type ProviderProp<P extends Any = {}> = {
+export interface ProviderProp<P extends Any = {}>
+  extends HTMLAttributes<HTMLElement> {
   children: ReactNode;
   autoBinding?: boolean;
   targetId?: string;
   targetSelector?: string;
   forwardedProps?: P;
-};
+}
 
 export type FormProviderProps = HTMLAttributes<HTMLElement> & {
   formProps?: HTMLAttributes<HTMLFormElement>;
@@ -28,15 +29,15 @@ export type FormProviderProps = HTMLAttributes<HTMLElement> & {
 };
 
 type InjectedHandlers<
-F extends FormControlData,
-N extends number = number
+  F extends FormControlData,
+  N extends number = number
 > = Partial<{
   change: (value: F[N]["value"]) => void;
   mouseover: () => void;
   mouseleave: () => void;
   focus: () => void;
   blur: () => void;
-}>
+}>;
 
 export interface InjectedProps<
   F extends FormControlData,
@@ -45,7 +46,7 @@ export interface InjectedProps<
 > extends InjectedHandlers<F, N> {
   metadata: Partial<M>[F[N]["field"]];
   datum?: F[N];
-};
+}
 
 export interface InjectedImmutableProps<
   F extends FormControlData,
@@ -53,7 +54,7 @@ export interface InjectedImmutableProps<
 > extends InjectedHandlers<F, N> {
   metadata: ImmutableMetaDatum;
   datum?: Immutable.Map<keyof F[N], PV<F[N]>>;
-};
+}
 
 export type Comparator<T> = (var1: T, var2: T) => boolean;
 

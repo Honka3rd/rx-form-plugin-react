@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.useClassName = void 0;
 const react_1 = require("react");
 const useClassName = (ref, className) => {
-    const prevClassName = (0, react_1.useRef)(className);
+    const prevClassName = (0, react_1.useRef)();
     (0, react_1.useEffect)(() => {
         const { current } = ref;
         if (!current) {
