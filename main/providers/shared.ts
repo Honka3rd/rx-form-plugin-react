@@ -1,11 +1,11 @@
-import { RefObject, useEffect, useRef } from "react";
+import { RefObject, useLayoutEffect, useRef } from "react";
 
 export const useClassName = (
   ref: RefObject<HTMLElement>,
   className?: string
 ) => {
   const prevClassName = useRef<string>();
-  useEffect(() => {
+  useLayoutEffect(() => {
     const { current } = ref;
     if (!current) {
       return;

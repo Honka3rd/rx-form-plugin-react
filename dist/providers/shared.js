@@ -4,7 +4,7 @@ exports.useClassName = void 0;
 const react_1 = require("react");
 const useClassName = (ref, className) => {
     const prevClassName = (0, react_1.useRef)();
-    (0, react_1.useEffect)(() => {
+    (0, react_1.useLayoutEffect)(() => {
         const { current } = ref;
         if (!current) {
             return;
