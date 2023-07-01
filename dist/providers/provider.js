@@ -16,6 +16,6 @@ const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = require("react");
 exports.FormProvider = (0, react_1.forwardRef)((props, ref) => {
     const { formProps, formLocator } = props, containerProps = __rest(props, ["formProps", "formLocator"]);
-    return ((0, jsx_runtime_1.jsx)("rx-form-component", Object.assign({}, containerProps, { ref: ref }, { children: (0, jsx_runtime_1.jsx)("form", Object.assign({}, formProps, { "data-form_id": formLocator }, { children: props.children })) })));
+    return ((0, jsx_runtime_1.jsx)("rx-form-component", Object.assign({}, containerProps, { ref: ref, "data-form_id": formLocator }, { children: (0, jsx_runtime_1.jsx)("form", Object.assign({}, formProps, { "data-locator": formLocator }, { children: props.children })) })));
 });
 //# sourceMappingURL=provider.js.map
