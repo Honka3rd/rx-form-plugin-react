@@ -43,7 +43,7 @@ const createNormalField = (formControl, field, type) => {
             if (autoBinding) {
                 return {
                     metadata,
-                    datum
+                    datum,
                 };
             }
             return {
@@ -55,7 +55,7 @@ const createNormalField = (formControl, field, type) => {
                 mouseleave,
                 blur,
             };
-        }, [autoBinding]);
+        }, [autoBinding, datum, metadata]);
         if (!(0, react_1.isValidElement)(only)) {
             return null;
         }
@@ -100,7 +100,16 @@ const NormalDynamicField = ({ formControl, field, type, children, autoBinding, t
             mouseleave,
             blur,
         };
-    }, [autoBinding]);
+    }, [
+        autoBinding,
+        datum,
+        metadata,
+        change,
+        focus,
+        mouseover,
+        mouseleave,
+        blur,
+    ]);
     if (!(0, react_1.isValidElement)(only)) {
         return null;
     }

@@ -70,7 +70,7 @@ export const createNormalField = <
       if (autoBinding) {
         return {
           metadata,
-          datum
+          datum,
         };
       }
       return {
@@ -82,7 +82,7 @@ export const createNormalField = <
         mouseleave,
         blur,
       };
-    }, [autoBinding]);
+    }, [autoBinding, datum, metadata]);
 
     if (!isValidElement(only)) {
       return null;
@@ -168,7 +168,16 @@ export const NormalDynamicField: FC<NormalDynamicFieldProps> = ({
       mouseleave,
       blur,
     };
-  }, [autoBinding]);
+  }, [
+    autoBinding,
+    datum,
+    metadata,
+    change,
+    focus,
+    mouseover,
+    mouseleave,
+    blur,
+  ]);
 
   if (!isValidElement(only)) {
     return null;

@@ -85,7 +85,7 @@ export const createImmutableField = <
         mouseleave,
         blur,
       };
-    }, [autoBinding]);
+    }, [autoBinding, datum, metadata]);
 
     if (!isValidElement(only)) {
       return null;
@@ -158,7 +158,7 @@ export const ImmutableDynamicField: FC<ImmutableDynamicFieldProps> = ({
       if (autoBinding) {
         return {
           metadata,
-          datum
+          datum,
         };
       }
       return {
@@ -170,7 +170,16 @@ export const ImmutableDynamicField: FC<ImmutableDynamicFieldProps> = ({
         mouseleave,
         blur,
       };
-    }, [autoBinding]);
+    }, [
+      autoBinding,
+      datum,
+      metadata,
+      change,
+      focus,
+      mouseover,
+      mouseleave,
+      blur,
+    ]);
 
   if (!isValidElement(only)) {
     return null;

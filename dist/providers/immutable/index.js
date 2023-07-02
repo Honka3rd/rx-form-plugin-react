@@ -43,7 +43,7 @@ const createImmutableField = (formControl, field, type) => {
                 mouseleave,
                 blur,
             };
-        }, [autoBinding]);
+        }, [autoBinding, datum, metadata]);
         if (!(0, react_1.isValidElement)(only)) {
             return null;
         }
@@ -76,7 +76,7 @@ const ImmutableDynamicField = ({ formControl, field, type, children, autoBinding
         if (autoBinding) {
             return {
                 metadata,
-                datum
+                datum,
             };
         }
         return {
@@ -88,7 +88,16 @@ const ImmutableDynamicField = ({ formControl, field, type, children, autoBinding
             mouseleave,
             blur,
         };
-    }, [autoBinding]);
+    }, [
+        autoBinding,
+        datum,
+        metadata,
+        change,
+        focus,
+        mouseover,
+        mouseleave,
+        blur,
+    ]);
     if (!(0, react_1.isValidElement)(only)) {
         return null;
     }
