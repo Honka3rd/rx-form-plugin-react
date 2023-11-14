@@ -6,7 +6,9 @@ const createUseFormData = (formControl, comparator) => {
     const { observeFormData, getFormData } = formControl;
     return (fields) => {
         const [formData, set] = (0, react_1.useState)(getFormData(fields));
-        (0, react_1.useEffect)(() => observeFormData(set, fields, comparator), []);
+        (0, react_1.useEffect)(() => observeFormData((formData) => {
+            set(formData);
+        }, fields, comparator), []);
         return formData;
     };
 };
